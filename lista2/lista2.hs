@@ -5,7 +5,10 @@ reversoAninhado x = map reverse x
 aFrente n x = map (n:) x
 
 --ex3
-sem
+inverte [] = []
+inverte (x:xs) = inverte xs ++ [x]
+
+semListaVazia x = inverte $ foldl (\acc x -> if length x > 0 then x:acc else acc) [] x
 --ex4
 
 --ex5
