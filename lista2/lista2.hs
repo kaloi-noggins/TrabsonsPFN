@@ -2,9 +2,10 @@
 reversoAninhado x = map reverse x
 
 --ex2
+aFrente n x = map (n:) x
 
 --ex3
-
+sem
 --ex4
 
 --ex5
