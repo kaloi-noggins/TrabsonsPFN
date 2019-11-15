@@ -1,7 +1,7 @@
 {-Alunos: Danilo Sousa Ruiz dos Passos e Kalyl Henings-}
 
 --ex1
-reversoAninhado xs = reverse $ map reverse xs
+reversoAninhado xs = inverte $ map reverse xs
 
 --ex2
 aFrente n xs = map (n:) xs
