@@ -1,16 +1,14 @@
 {-Alunos: Danilo Sousa Ruiz dos Passos e Kalyl Henings-}
 
 --ex1
-reversoAninhado xs = inverte $ map reverse xs
+reversoAninhado xs = reverse $ map reverse xs
 
 --ex2
 aFrente n xs = map (n:) xs
 
 --ex3
-inverte [] = []
-inverte (x:xs) = inverte xs ++ [x]
+semListaVazia x = reverse $ foldl (\acc x -> if length x > 0 then x:acc else acc) [] x
 
-semListaVazia x = inverte $ foldl (\acc x -> if length x > 0 then x:acc else acc) [] x
 --ex4
 cNroPar [] = []
 cNroPar (x:xs) = semListaVazia $ checaPar x : cNroPar xs
@@ -25,7 +23,9 @@ aFrentePar n xs = addNmb n listaListaPares
 
 --ex6
 strPrimeiros3 x = foldr (\acc x -> acc ++ take 3 x)  [] x
+
 --ex7
+
 
 --ex8
 
@@ -34,5 +34,5 @@ strPrimeiros3 x = foldr (\acc x -> acc ++ take 3 x)  [] x
 --ex10
 
 --ex11
-
 --ex12
+scanl' xs = foldl (\acc x -> acc++[x]) [] xs
