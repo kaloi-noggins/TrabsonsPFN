@@ -16,7 +16,7 @@ cNroPar [] = []
 cNroPar (x:xs) = semListaVazia $ checaPar x : cNroPar xs
     where checaPar x = if length (filter even x) > 0 then x else [] 
 
-    --ex5
+--ex5
 addNmb _ [] = []
 addNmb n (x:xs) = n++x : addNmb n xs
 
@@ -24,7 +24,7 @@ aFrentePar n xs = addNmb n listaListaPares
     where listaListaPares = cNroPar xs
 
 --ex6
-
+strPrimeiros3 x = foldr (\acc x -> acc ++ take 3 x)  [] x
 --ex7
 
 --ex8
