@@ -41,7 +41,9 @@ remover a (x:xs) = if x==a then remover a xs else x:remover a xs
 
 shorten [] = []
 shorten xxs@(x:xs)
-    |(qtd x xs) == 0 = x:shorten xs
+    |(qtd x xs) == 0 = x:shorten xs    let lowCase = map toLower textFile
+    let sanitized = sanitize lowCase
+    let linas
     |otherwise = x:shorten (remover x xs)
 
 ------------------------
@@ -50,6 +52,7 @@ printLinhas ((n,s):xs) = do
     putStr ((show n) ++ "-")
     putStrLn s
     printLinhas xs
+    
 numerar _ [] = []
 numerar n (x:xs) = (n,x):numerar (n+1) xs
 
