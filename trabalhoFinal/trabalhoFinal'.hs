@@ -1,17 +1,19 @@
-import System.IO
+-- import System.IO
 import Data.Char(toLower)
 
 main = do 
     textFile <- readFile "oof.txt"
-    let lowCase = map toLower textFile
-    let sanitized = sanitize lowCase
-    let linhas = lines sanitized
-    let linhasNumeradas = numLinhas 0 linhas
+    let lowCase = map toLower textFile -- Converte o texto para lowercase (auxilio para analise)
+    let sanitized = sanitize lowCase -- Remove pontuacao (auxilio para analise)
+    let linhas = lines sanitized -- a) Separar o documento em linhas
+    let linhasNumeradas = numLines 1 linhas -- b) Numerar as linhas do documento
+    let -- c) Associar a cada ocorrência de uma palavra do documento, o número da linha em que essa palavra ocorre
+
     print linhasNumeradas
 
--- Removedor pontuação
+-- Removedor de pontuação
 sanitize xs = [ x | x <- xs, not (x `elem` ",.?!-:;\"\'") ]
 
---Numerador de linhas
-numLinhas _ [] = []
-numLinhas n (x:xs) = (n,x) : numLinhas (n+1) xs
+-- Numerador de linhas
+numLines _ [] = []
+numLines n (x:xs) = (n,x) : numLines (n+1) xs
