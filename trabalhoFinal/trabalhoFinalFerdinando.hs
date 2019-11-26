@@ -41,9 +41,10 @@ remover a (x:xs) = if x==a then remover a xs else x:remover a xs
 
 shorten [] = []
 shorten xxs@(x:xs)
-    |(qtd x xs) == 0 = x:shorten xs    let lowCase = map toLower textFile
-    let sanitized = sanitize lowCase
-    let linas
+    |(qtd x xs) == 0 = x:shorten xs
+    -- let lowCase = map toLower textFile
+    -- let sanitized = sanitize lowCase
+    -- let linas
     |otherwise = x:shorten (remover x xs)
 
 ------------------------
@@ -59,7 +60,7 @@ numerar n (x:xs) = (n,x):numerar (n+1) xs
 resultado xs =(foldr (\(n,s) -> (++) (show s ++ " - " ++ show n ++"\n")) "" xs)
 
 main = do
-    texto <- (readFile "t.txt")
+    texto <- (readFile "oof.txt")
     let linhas = lines $ tirar texto
     let result = shorten $ almalgamate $ sortLs $ allNumWords (numerar 1 linhas)
     putStr $ resultado result
