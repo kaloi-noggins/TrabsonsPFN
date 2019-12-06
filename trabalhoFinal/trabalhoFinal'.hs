@@ -1,4 +1,4 @@
--- import System.IO
+import System.IO
 import Data.Char(toLower)
 
 main = do 
@@ -7,9 +7,9 @@ main = do
     let sanitized = sanitize lowCase -- Remove pontuacao (auxilio para analise)
     let linhas = lines sanitized -- a) Separar o documento em linhas
     let linhasNumeradas = numLines 1 linhas -- b) Numerar as linhas do documento
-    let -- c) Associar a cada ocorrência de uma palavra do documento, o número da linha em que essa palavra ocorre
-
-    print linhasNumeradas
+    let listaPalvrasIndices = numPalavras (linhasNumeradas)
+   -- let listaAlfabetica = sortStr linhasNumeradas
+    print listaPalvrasIndices
 
 -- Removedor de pontuação
 sanitize xs = [ x | x <- xs, not (x `elem` ",.?!-:;\"\'") ]
@@ -17,3 +17,10 @@ sanitize xs = [ x | x <- xs, not (x `elem` ",.?!-:;\"\'") ]
 -- Numerador de linhas
 numLines _ [] = []
 numLines n (x:xs) = (n,x) : numLines (n+1) xs
+
+
+-- Numerador de palavras
+separar _ [] = []
+separar n (x:xs) = (n,x) : separar n xs
+
+numPalavras xs = foldr (\(n,s) -> (++) $ separar n (words s)) [] xs
